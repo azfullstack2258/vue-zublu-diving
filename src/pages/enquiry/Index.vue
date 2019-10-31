@@ -33,7 +33,13 @@
       <q-step :name="3" title="Review" icon="spellcheck" :done="done3">
         <Review />
         <q-stepper-navigation>
-          <q-btn color="primary" @click="allDone" label="Send enquiry" />
+          <p class="text-warning" v-if="validateWizard">{{ validateWizard }}</p>
+          <q-btn
+            color="primary"
+            @click="allDone"
+            label="Send enquiry"
+            :disabled="validateWizard!==''"
+          ></q-btn>
           <q-btn flat @click="step = 2" color="primary" label="Back" class="q-ml-sm" />
         </q-stepper-navigation>
       </q-step>
@@ -66,6 +72,15 @@ export default {
   computed: {
     ...mapState("resort", ["diverCount", "nonDiverCount"]),
     ...mapGetters("enquiry", ["getDivers", "getNonDivers"]),
+    validateWizard() {
+      if (!this.done1) {
+        return "Please complete Activities form";
+      }
+      if (!this.done2) {
+        return "Please complete Details form.";
+      }
+      return "";
+    },
     validateDiverPackages() {
       if (this.getDivers === 0) {
         return this.$t("message.error.no_diver_packages");
