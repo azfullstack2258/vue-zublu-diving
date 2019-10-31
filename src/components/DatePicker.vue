@@ -11,7 +11,7 @@
       <template v-slot:append>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-            <q-date v-model="date" @input="onChange" />
+            <q-date v-model="date" @input="onChange" :options="date => date >= today" />
           </q-popup-proxy>
         </q-icon>
       </template>
@@ -43,6 +43,9 @@ export default {
         this.date = new Date(val);
         this.$emit("change", val);
       }
+    },
+    today() {
+      return moment().format(this.formatString);
     }
   },
   methods: {

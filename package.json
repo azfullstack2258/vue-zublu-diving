@@ -2,7 +2,7 @@
   "name": "vue-zublu-diving",
   "version": "0.0.1",
   "description": "A real life scenario about a customer wanting to book a day trip with a dive centre through ZuBlu.",
-  "productName": "Quasar App",
+  "productName": "Book a trip - ZuBlu",
   "cordovaId": "org.cordova.quasar.app",
   "capacitorId": "",
   "author": "Passion Dev",
