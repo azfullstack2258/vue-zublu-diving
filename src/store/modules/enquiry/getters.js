@@ -17,3 +17,7 @@ export function diverPackages(state) {
 export function nonDiverPackages(state) {
   return state.packages.filter(p => p.for === "non-diver");
 }
+
+export function totalPrice(state) {
+  return state.packages.reduce((p, c) => p + c.guests * c.price, 0);
+}
