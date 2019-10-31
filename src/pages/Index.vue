@@ -35,6 +35,7 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
+        <q-btn :label="$t('Enquiry')" @click="goToEnquiry" />
       </div>
       <div class="col-4">Content</div>
     </div>
@@ -43,6 +44,7 @@
 
 <script>
 import { mapState } from "vuex";
+import Pluralize from "pluralize";
 import DatePicker from "../components/DatePicker";
 import { SET_DATA } from "../store/modules/mutation-types";
 
@@ -54,9 +56,12 @@ export default {
   computed: {
     ...mapState("resort", ["diverCount", "nonDiverCount", "date"]),
     guestsLabel() {
-      const diverStr = (this.diverCount && `${this.diverCount} divers`) || "";
+      const diverStr =
+        (this.diverCount && Pluralize("diver", this.diverCount, true)) || "";
       const nonDiverStr =
-        (this.nonDiverCount && `${this.nonDiverCount} non-divers`) || "";
+        (this.nonDiverCount &&
+          Pluralize("non-diver", this.nonDiverCount, true)) ||
+        "";
       if (diverStr && nonDiverStr) {
         return [diverStr, nonDiverStr].join(", ");
       } else {
@@ -67,6 +72,28 @@ export default {
   methods: {
     onChange(key, value) {
       this.$store.commit(`resort/${SET_DATA}`, { key, value });
+    },
+    notifyError(err) {
+      this.$q.notify({
+        icon: "warning",
+        message: err,
+        color: "negative",
+        html: true
+      });
+    },
+    goToEnquiry() {
+      // Validation
+      if (!this.date) {
+        this.notifyError(this.$t("message.error.no_date"));
+        return;
+      }
+      if (!this.guestsLabel) {
+        this.notifyError(this.$t("message.error.no_guest"));
+        return;
+      }
+
+      // Good to go to Enquiry!
+      this.$router.push("/enquiry");
     }
   }
 };
