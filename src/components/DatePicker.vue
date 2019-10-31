@@ -4,7 +4,7 @@
       <template v-slot:append>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-            <q-date v-model="date" @input="() => $refs.qDateProxy.hide()" />
+            <q-date v-model="date" @input="onChange" />
           </q-popup-proxy>
         </q-icon>
       </template>
@@ -34,7 +34,14 @@ export default {
       },
       set: function(val) {
         this.date = new Date(val);
+        this.$emit("change", val);
       }
+    }
+  },
+  methods: {
+    onChange() {
+      this.$emit("change", this.date);
+      this.$refs.qDateProxy.hide();
     }
   }
 };

@@ -3,5 +3,7 @@
 
 export default {
   failed: "Action failed",
-  success: "Action was successful"
+  success: "Action was successful",
+  Divers: "Divers",
+  "Non-divers": "Non-divers"
 };
