@@ -16,11 +16,7 @@
       </q-step>
 
       <q-step :name="2" title="Details" icon="receipt" :done="done2">
-        <Details />
-        <q-stepper-navigation>
-          <q-btn @click="() => { done2 = true; step = 3 }" color="primary" label="Continue" />
-          <q-btn flat @click="step = 1" color="primary" label="Back" class="q-ml-sm" />
-        </q-stepper-navigation>
+        <Details @next="() => { done2 = true; step = 3 }" />
       </q-step>
 
       <q-step :name="3" title="Review" icon="spellcheck" :done="done3">
