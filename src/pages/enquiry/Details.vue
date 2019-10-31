@@ -33,7 +33,13 @@
           ]"
         />
         <!-- Show limited countries for now. -->
-        <q-select outlined v-model="country" :options="['Hong Kong', 'Canada']" label="Outlined" />
+        <q-select
+          outlined
+          v-model="country"
+          :options="['Hong Kong', 'Canada']"
+          label="Country*"
+          :rules="[val => val && val.length > 0 || 'Please select country']"
+        />
 
         <q-input
           filled

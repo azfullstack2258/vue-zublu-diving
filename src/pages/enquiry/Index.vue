@@ -22,7 +22,7 @@
       <q-step :name="3" title="Review" icon="spellcheck" :done="done3">
         <Review />
         <q-stepper-navigation>
-          <q-btn color="primary" @click="done3 = true" label="Send enquiry" />
+          <q-btn color="primary" @click="allDone" label="Send enquiry" />
           <q-btn flat @click="step = 2" color="primary" label="Back" class="q-ml-sm" />
         </q-stepper-navigation>
       </q-step>
@@ -73,6 +73,11 @@ export default {
       return "";
     }
   },
-  methods: {}
+  methods: {
+    allDone() {
+      this.done3 = true;
+      this.$router.push("/thankyou");
+    }
+  }
 };
 </script>
