@@ -1,4 +1,4 @@
-import { SET_PACKAGE_GUEST_COUNT } from "../mutation-types";
+import { SET_PACKAGE_GUEST_COUNT, SET_CONTACT_INFO } from "../mutation-types";
 
 export default {
   [SET_PACKAGE_GUEST_COUNT](state, { name, count }) {
@@ -7,5 +7,8 @@ export default {
       return;
     }
     pkg.guests = count;
+  },
+  [SET_CONTACT_INFO](state, { field, value }) {
+    state.details[field] = value;
   }
 };

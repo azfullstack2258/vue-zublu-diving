@@ -60,25 +60,74 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 import Report from "./Report";
 import { validateEmail } from "../../utils/helper";
+import { SET_CONTACT_INFO } from "../../store/modules/mutation-types";
 
 export default {
   name: "Details",
   components: {
     Report
   },
-  data() {
-    return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      country: "",
-      phone: "",
-      additionalInfo: ""
-    };
+  computed: {
+    ...mapState("enquiry", ["details"]),
+    firstName: {
+      get: function() {
+        return this.details.firstName;
+      },
+      set: function(val) {
+        this.setData("firstName", val);
+      }
+    },
+    lastName: {
+      get: function() {
+        return this.details.lastName;
+      },
+      set: function(val) {
+        this.setData("lastName", val);
+      }
+    },
+    email: {
+      get: function() {
+        return this.details.email;
+      },
+      set: function(val) {
+        this.setData("email", val);
+      }
+    },
+    country: {
+      get: function() {
+        return this.details.country;
+      },
+      set: function(val) {
+        this.setData("country", val);
+      }
+    },
+    phone: {
+      get: function() {
+        return this.details.phone;
+      },
+      set: function(val) {
+        this.setData("phone", val);
+      }
+    },
+    additionalInfo: {
+      get: function() {
+        return this.details.additionalInfo;
+      },
+      set: function(val) {
+        this.setData("additionalInfo", val);
+      }
+    }
   },
   methods: {
+    setData(field, value) {
+      this.$store.commit(`enquiry/${SET_CONTACT_INFO}`, {
+        field,
+        value
+      });
+    },
     onSubmit() {
       this.$refs.createForm.validate().then(success => {
         if (success) {

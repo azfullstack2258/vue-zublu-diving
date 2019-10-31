@@ -21,5 +21,13 @@ export default {
       price: 50,
       guests: 0
     }
-  ]
+  ],
+  details: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    country: "",
+    phone: "",
+    additionalInfo: ""
+  }
 };
