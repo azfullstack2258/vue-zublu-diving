@@ -11,6 +11,7 @@ export default {
     error: {
       no_date: "Please select date.",
       no_guest: "Please select guest",
+      no_diver: "Please add at least one diver",
       no_diver_packages: "At least one diver package should be selected",
       more_diver_packages_selected:
         "More diver packages are selected than guests",

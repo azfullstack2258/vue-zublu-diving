@@ -104,9 +104,8 @@ export default {
         this.notifyError(this.$t("message.error.no_date"));
         return;
       }
-      if (!this.guestsLabel) {
-        this.notifyError(this.$t("message.error.no_guest"));
-        return;
+      if (this.diverCount === 0) {
+        this.notifyError(this.$t("message.error.no_diver"));
       }
 
       // Good to go to Enquiry!
