@@ -1,11 +1,21 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="column">
-      <div class="col-3">Two Fish Resort</div>
-      <div class="col">
-        Dates
-        <DatePicker v-model="date" @change="val => onChange('date', val)" />Guests
-        <q-btn-dropdown offset-menu no-caps icon="arrow_down" :label="guestsLabel">
+    <div class="full-width" style="height:calc(100vh - 100px);">
+      <div class="flex flex-center justify-center bg-grey-3" style="height:300px;">
+        <p class="text-h3">Two Fish Resort</p>
+      </div>
+      <div class="col flex flex-center bg-grey-7" style="color:white;height:100px;">
+        <strong>Dates</strong>
+        <DatePicker v-model="date" @change="val => onChange('date', val)" />
+        <strong>Guests</strong>
+        <q-btn-dropdown
+          offset-menu
+          class="bg-white"
+          no-caps
+          icon="arrow_down"
+          :label="guestsLabel"
+          style="margin-left: 20px;min-width:250px;color:black;"
+        >
           <q-list style="min-width: 100px">
             <q-item class="flex items-center justify-between">
               {{ $t("Divers") }}
@@ -35,9 +45,16 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
-        <q-btn :label="$t('Enquiry')" @click="goToEnquiry" />
+        <q-btn
+          color="primary"
+          :label="$t('Enquiry')"
+          @click="goToEnquiry"
+          style="margin-left: 20px;"
+        />
       </div>
-      <div class="col-4">Content</div>
+      <div class="flex flex-center justify-center" style="height:calc(100% - 400px);">
+        <p class="text-h5">Content</p>
+      </div>
     </div>
   </q-page>
 </template>

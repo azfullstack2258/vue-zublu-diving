@@ -1,15 +1,17 @@
 <template>
-  <q-card>
+  <q-card style="width: 300px;">
     <q-card-section>
-      <p class="text-h3">{{ data.name }}</p>
-      <p>{{ data.content }}</p>
-      <p class="text-disable">Include equipment</p>
-      <p>{{ `$${data.price}/guest`}}</p>
-      <p>Includes transport</p>
-      <div>
+      <p class="text-h5">{{ data.name }}</p>
+      <p class="text-h6">{{ data.content }}</p>
+      <p disabled>Include equipment</p>
+      <p class="text-h6">{{ `$${data.price}/guest`}}</p>
+      <p disabled>Includes transport</p>
+      <br />
+      <div class="flex flex-center justify-center">
         <q-btn flat label="-" :disable="data.guests === 0" @click="decreaseGuest" />
-        {{ data.guests }}
-        <q-btn flat label="+" @click="increaseGuest" />Guests
+        &nbsp;&nbsp;{{ data.guests }}&nbsp;&nbsp;
+        <q-btn flat label="+" @click="increaseGuest" />
+        <strong>&nbsp;&nbsp;Guests</strong>
       </div>
     </q-card-section>
   </q-card>

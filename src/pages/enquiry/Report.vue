@@ -1,23 +1,24 @@
 <template>
-  <div>
+  <q-card class="q-pa-md" style="min-width: 400px;margin-left:0;">
     <p>Dive resort - Bunaken</p>
-    <p class="text-h2">Two fish</p>
-    <q-separator />
+    <p class="text-h6">Two fish</p>
+    <q-separator style="margin-bottom:20px;" />
     <p>{{ `On ${date} `}}</p>
     <p>{{ guestCount }}</p>
-    <q-separator />
+    <q-separator style="margin-bottom:20px;" />
     <template v-for="(pkg, id) in packages">
-      <div v-if="pkg.guests > 0" :key="id">
+      <div class="flex justify-between" v-if="pkg.guests > 0" :key="id">
         <span>{{ pkg.name }} package</span>
         <span>x{{ pkg.guests }}</span>
         <span>${{ pkg.price }}</span>
       </div>
     </template>
-    <div>
-      <span class="text-h4">Total (USD)</span>
-      <span class="text-h4">{{totalPrice}}</span>
+    <q-separator style="margin-bottom:20px;" />
+    <div class="flex justify-between">
+      <span class="text-h6">Total (USD)</span>
+      <span class="text-h6">${{totalPrice}}</span>
     </div>
-  </div>
+  </q-card>
 </template>
 <script>
 import { mapState, mapGetters } from "vuex";

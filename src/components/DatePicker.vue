@@ -1,6 +1,13 @@
 <template>
   <div class="q-pa-md" style="max-width: 300px">
-    <q-input filled v-model="formattedDate" mask="date" :rules="['date']">
+    <q-input
+      class="bg-white"
+      filled
+      v-model="formattedDate"
+      mask="date"
+      :rules="['date']"
+      style="padding:0"
+    >
       <template v-slot:append>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">

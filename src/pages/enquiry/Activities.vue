@@ -1,16 +1,21 @@
 <template>
-  <div class="q-pa-md flex-center">
+  <div class="q-gutter-md flex-start flex">
     <Report />
     <div class="q-gutter-md">
-      <p>What will you do?</p>
-      <p>{{ getDivers }}/{{diverCount}}</p>
-      <Package
-        v-for="(pkg, id) in diverPackages"
-        :key="id+'diver'"
-        :data="pkg"
-        @changeGuest="onChangeGuests"
-      />
-      <p>{{ getNonDivers }}/{{nonDiverCount}}</p>
+      <p class="text-h4">What will you do?</p>
+      <p class="text-h5" style="margin-bottom:0">{{ getDivers }}/{{diverCount}} Divers</p>
+      <div class="flex q-gutter-md flex-wrap no-margin">
+        <Package
+          v-for="(pkg, id) in diverPackages"
+          :key="id+'diver'"
+          :data="pkg"
+          @changeGuest="onChangeGuests"
+        />
+      </div>
+      <p
+        class="text-h5"
+        style="margin-bottom:0"
+      >{{ getNonDivers }}/{{nonDiverCount}} {{nonDiverCount !== 1 ? "non-divers" : 'non-diver'}}</p>
       <Package
         v-for="(pkg, id) in nonDiverPackages"
         :key="id+'non-diver'"
