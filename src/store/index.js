@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import { resort } from "./modules";
+import { resort, enquiry } from "./modules";
 
 Vue.use(Vuex);
 
@@ -13,7 +13,8 @@ Vue.use(Vuex);
 export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      resort
+      resort,
+      enquiry
     },
 
     // enable strict mode (adds overhead!)
