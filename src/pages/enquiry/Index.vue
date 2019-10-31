@@ -78,10 +78,11 @@ export default {
       return "";
     },
     validateNonDiverPackages() {
+      if (this.getNonDivers === 0) return "";
       if (this.nonDiverCount < this.getNonDivers) {
         return this.$t("message.error.more_non_diver_packages_selected");
       } else if (this.nonDiverCount > this.getNonDivers) {
-        return this.$t("message.error.more_non_diver_packages_selected");
+        return this.$t("message.error.less_non_diver_packages_selected");
       }
       return "";
     }
