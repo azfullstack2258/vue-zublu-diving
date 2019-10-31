@@ -12,6 +12,9 @@
           <span class="text-h6">{{ getPackageString(pack) }}</span>
         </div>
       </template>
+      <div>
+        <span class="text-h6">For {{customerInfo}}</span>
+      </div>
       <q-separator />
       <p class="text-h5">
         <strong>Total (USD): ${{ totalPrice }}</strong>
@@ -27,10 +30,13 @@ export default {
   name: "Review",
   computed: {
     ...mapState("resort", ["date", "diverCount", "nonDiverCount"]),
-    ...mapState("enquiry", ["packages"]),
+    ...mapState("enquiry", ["packages", "details"]),
     ...mapGetters("enquiry", ["totalPrice"]),
     guestCount() {
       return Pluralize("guest", this.diverCount + this.nonDiverCount, true);
+    },
+    customerInfo() {
+      return `${this.details.firstName} ${this.details.lastName} (${this.details.email})`;
     }
   },
   methods: {
