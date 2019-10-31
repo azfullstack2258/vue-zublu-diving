@@ -1,17 +1,28 @@
 <template>
-  <div class="q-pa-md">
-    <q-stepper v-model="step" header-nav ref="stepper" color="primary" animated>
+  <div class="q-pa-md q-gutter-md flex items-start no-margin">
+    <Report />
+    <q-stepper style="flex:auto" v-model="step" header-nav ref="stepper" color="primary" animated>
       <q-step :name="1" title="Activities" icon="insert_emoticon" :done="done1">
         <Activities />
-        <q-stepper-navigation>
+        <q-stepper-navigation
+          class="q-gutter-md flex items-center justify-start"
+          style="margin-left:16px;"
+        >
           <q-btn
             @click="() => { done1 = true; step = 2 }"
             color="primary"
             label="Continue"
             :disable="getDivers === 0"
+            class="no-margin"
           />
-          <p v-if="validateDiverPackages">{{ validateDiverPackages }}</p>
-          <p v-if="validateNonDiverPackages">{{ validateNonDiverPackages }}</p>
+          <div style="margin-top:0">
+            <p class="no-margin" v-if="validateDiverPackages" disabled>{{ validateDiverPackages }}</p>
+            <p
+              class="no-margin"
+              v-if="validateNonDiverPackages"
+              disabled
+            >{{ validateNonDiverPackages }}</p>
+          </div>
         </q-stepper-navigation>
       </q-step>
 
@@ -34,13 +45,15 @@ import { mapState, mapGetters } from "vuex";
 import Activities from "./Activities";
 import Details from "./Details";
 import Review from "./Review";
+import Report from "./Report";
 
 export default {
   name: "Enquiry",
   components: {
     Activities,
     Details,
-    Review
+    Review,
+    Report
   },
   data() {
     return {

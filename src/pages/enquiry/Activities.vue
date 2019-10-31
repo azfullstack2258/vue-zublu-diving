@@ -1,6 +1,5 @@
 <template>
   <div class="q-gutter-md flex-start flex">
-    <Report />
     <div class="q-gutter-md">
       <p class="text-h4">What will you do?</p>
       <p class="text-h5" style="margin-bottom:0">{{ getDivers }}/{{diverCount}} Divers</p>
@@ -27,14 +26,12 @@
 </template>
 <script>
 import { mapState, mapGetters } from "vuex";
-import Report from "./Report";
 import Package from "../../components/Package";
 import { SET_PACKAGE_GUEST_COUNT } from "../../store/modules/mutation-types";
 
 export default {
   name: "Activities",
   components: {
-    Report,
     Package
   },
   computed: {

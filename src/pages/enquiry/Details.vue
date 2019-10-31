@@ -1,8 +1,7 @@
 <template>
-  <div class="q-pa-md">
-    <Report />
-    <div class="q-gutter-md">
-      <p>Who's coming?</p>
+  <div class="q-gutter-md flex flex-start">
+    <div class="q-gutter-md" style="flex:auto">
+      <p class="text-h4">Who's coming?</p>
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md" ref="createForm">
         <q-input
           filled
@@ -67,15 +66,11 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import Report from "./Report";
 import { validateEmail } from "../../utils/helper";
 import { SET_CONTACT_INFO } from "../../store/modules/mutation-types";
 
 export default {
   name: "Details",
-  components: {
-    Report
-  },
   computed: {
     ...mapState("enquiry", ["details"]),
     firstName: {
