@@ -106,6 +106,7 @@ export default {
       }
       if (this.diverCount === 0) {
         this.notifyError(this.$t("message.error.no_diver"));
+        return;
       }
 
       // Good to go to Enquiry!
