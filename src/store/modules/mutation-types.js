@@ -5,3 +5,5 @@ export const SET_NON_DIVER_COUNT = "💾 Setting non-diver count...";
 
 export const SET_PACKAGE_GUEST_COUNT = "💾 Setting package's guest count...";
 export const SET_CONTACT_INFO = "💾 Setting contact info's field data...";
+
+export const INITIALIZE = "🗑️ Initializing state...";

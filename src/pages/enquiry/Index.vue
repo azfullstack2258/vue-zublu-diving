@@ -52,6 +52,7 @@ import Activities from "./Activities";
 import Details from "./Details";
 import Review from "./Review";
 import Report from "./Report";
+import { INITIALIZE } from "../../store/modules/mutation-types";
 
 export default {
   name: "Enquiry",
@@ -105,6 +106,11 @@ export default {
   methods: {
     allDone() {
       this.done3 = true;
+
+      // Initialize vuex store states once done
+      this.$store.commit(`resort/${INITIALIZE}`);
+      this.$store.commit(`enquiry/${INITIALIZE}`);
+
       this.$router.push("/thankyou");
     }
   }
