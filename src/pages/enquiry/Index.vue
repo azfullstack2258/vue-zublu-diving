@@ -55,20 +55,20 @@ export default {
     ...mapGetters("enquiry", ["getDivers", "getNonDivers"]),
     validateDiverPackages() {
       if (this.getDivers === 0) {
-        return "At least one diver package should be selected";
+        return this.$t("message.error.no_diver_packages");
       }
       if (this.diverCount < this.getDivers) {
-        return "More diver packages are selected than guests";
+        return this.$t("message.error.more_diver_packages_selected");
       } else if (this.diverCount > this.getDivers) {
-        return "Less diver packages are selected than guests";
+        return this.$t("message.error.less_diver_packages_selected");
       }
       return "";
     },
     validateNonDiverPackages() {
       if (this.nonDiverCount < this.getNonDivers) {
-        return "More non-diver packages are selected than guests";
+        return this.$t("message.error.more_non_diver_packages_selected");
       } else if (this.nonDiverCount > this.getNonDivers) {
-        return "Less non-diver packages are selected than guests";
+        return this.$t("message.error.more_non_diver_packages_selected");
       }
       return "";
     }
